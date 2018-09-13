@@ -1,0 +1,76 @@
+﻿@model IEnumerable<MobileViewModel>
+@{
+    ViewData["Title"] = "Catalog";
+}
+
+<div class="row row-offcanvas row-offcanvas-left">
+    <div class="col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+        <div class="sidebar-nav">
+            <ul class="nav">
+                <form method="post" action="@Url.Action("FilterProducts","App")">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="Query" id="name" placeholder="Name" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Brand</label>
+                        <select class="form-control btn btn-default" data-ng-options="t.name for t in vm.types" data-ng-model="vm.object.type">
+                            @{
+                                string prev = null;
+                                    foreach (var m in Model)
+                                    {
+
+                                        if (prev != m.Brand)
+                                        {
+                                            <option>@m.Brand</option>
+                                    }
+                                    prev = m.Brand;
+                                }
+                            }
+                        </select>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="number" class="form-control col-md-5" name="priceFrom" placeholder="From-price" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="number" class="form-control col-md-5" name="priceTo" placeholder="To-price" />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-success">Search</button>
+
+                </form>
+
+            </ul>
+        </div>
+        <!--/.well -->
+    </div>
+    <!--/span-->
+    <div class="col-xs-12 col-sm-9">
+        <h1>@ViewBag.Title</h1>
+
+        @foreach (var m in Model)
+        {
+            <div class="col-md-4">
+                <div class="well well-sm">
+                    <img class="fixed-img" src="@m.Photos.FirstOrDefault().Base64" alt="Vangog img" />
+                    <h4>Product:  @m.Brand , @m.Name</h4>
+                    <ul class="product-props">
+                        <li>Price: GEL @m.Price</li>
+                        <li>Internal Memory:  @m.InternalMemory</li>
+                    </ul>
+                    <a class="btn btn-primary" asp-controller="Products" asp-action="ProductDeteils" asp-route-id="@m.MobileId">Details</a>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+

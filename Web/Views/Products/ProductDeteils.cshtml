@@ -1,0 +1,29 @@
+﻿@model MobileViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@ViewBag.Title</h1>
+
+
+<div class="col-md-4">
+    <div class="well well-sm">
+        <img class="fixed-img" src="@Model.Photos.FirstOrDefault().Base64" alt="Vangog img" />
+        <h3> @Model.Brand , @Model.Name</h3>
+        <ul class="product-props">
+            <li>Price: GEL @Model.Price</li>
+            <li>Internal Memory:  @Model.InternalMemory</li>
+            <li>OS:  @Model.OS</li>
+            <li>RAM:  @Model.RAM</li>
+            <li>Screen Size:  @Model.ScreenSize</li>
+            <li>Screen Resolution:  @Model.ScreenResolution</li>
+            <li>Size:  @Model.Size</li>
+            <li>CPU:  @Model.CPU</li>
+            <li>Weight:  @Model.Weight</li>
+        </ul>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <iframe width="560" height="315" src="@Model.VideoUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>

@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>eMobile: @ViewBag.Title</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/mycss.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="navbar navbar-fixed-top navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" asp-controller="App" asp-action="Index">eMobile</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li ><a asp-controller="App" asp-action="Index">Home</a></li>
+                </ul>
+            </div>
+            <!-- /.nav-collapse -->
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.navbar -->
+    <div class="container-fluid"><br /><br />
+
+            @RenderBody()
+
+        <!--row-->
+        <footer class="navbar navbar-fixed-bottom">
+            <p>© Akaki Chkopoia 2018</p>
+        </footer>
+    </div>
+    <!--/.container-->
+    <script src="~/jquery/dist/jquery.slim.js"></script>
+    <script src="~/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
